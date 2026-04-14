@@ -1,0 +1,1484 @@
+{
+	"info": {
+		"_postman_id": "c62cbf79-30dc-4406-9dfe-d439e287db66",
+		"name": "Coffee Shop POS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"owner@coffee.com\",\n  \"password\": \"secretpassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refresh_token\": \"eyJhbGci...\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "List Kategori",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Kategori",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Espresso Based\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Kategori",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Non Coffee\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/categories/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-cat-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Kategori",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/categories/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-cat-1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "List Produk Katalog",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/products?category_id=uuid&search=latte&page=1&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"products"
+							],
+							"query": [
+								{
+									"key": "category_id",
+									"value": "uuid"
+								},
+								{
+									"key": "search",
+									"value": "latte"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Produk",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-prod-123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Produk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"category_id\": \"uuid-cat-123\",\n  \"name\": \"Caramel Macchiato\",\n  \"description\": \"Kopi caramel dengan sentuhan macchiato\",\n  \"price\": 2500000, \n  \"is_available\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Produk",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"category_id\": \"uuid-cat-123\",\n  \"name\": \"Caramel Macchiato\",\n  \"description\": \"Kopi caramel dengan sentuhan macchiato\",\n  \"price\": 2500000, \n  \"is_available\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-prod-123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Produk",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-prod-123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stock",
+			"item": [
+				{
+					"name": "Cek Sisa Stok Produk",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/products/:id/stock",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"products",
+								":id",
+								"stock"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-prod-123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Penyesuaian/Mutasi Manual (Adjustment)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"quantity\": 50,\n  \"type\": \"adjustment\", \n  \"note\": \"Restock beans dari supplier\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/products/:id/stock/adjustment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"products",
+								":id",
+								"stock",
+								"adjustment"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-prod-123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log Pergerakan Stok (Movements)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/products/:id/stock/movements?page=1&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"products",
+								":id",
+								"stock",
+								"movements"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-prod-123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tables",
+			"item": [
+				{
+					"name": "List Meja",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/tables",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Meja",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Meja 02\",\n  \"status\": \"available\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/tables",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Meja",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Meja VIP\",\n  \"status\": \"available\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/tables/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"tables",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-table-2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Meja",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/tables/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"tables",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-table-2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cashiers",
+			"item": [
+				{
+					"name": "List User Kasir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/cashiers?search=siti&page=1&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"cashiers"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "siti"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buat Akun Kasir Baru",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Siti Kasir\",\n  \"email\": \"siti@coffee.com\",\n  \"password\": \"initpasswordbaru\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/cashiers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"cashiers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data Profil Kasir",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Siti Rahmawati\",\n  \"email\": \"siti.rahma@coffee.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/cashiers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"cashiers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-user-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aktif/Non-aktifkan Kasir (Toggle Status)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/cashiers/:id/toggle-status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"cashiers",
+								":id",
+								"toggle-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-user-1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promos",
+			"item": [
+				{
+					"name": "List Promos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/promos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"promos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Promo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Diskon Akhir Tahun 15%\",\n  \"promo_type\": \"percentage\",\n  \"amount\": 15,\n  \"is_active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/promos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"promos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Promo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Diskon Akhir Tahun 15%\",\n  \"promo_type\": \"percentage\",\n  \"amount\": 15,\n  \"is_active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/promos/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"promos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-promo-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Promo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/promos/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"promos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-promo-1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Total Pendapatan (Revenue)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/reports/revenue?start_date=2026-04-01&end_date=2026-04-30",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"reports",
+								"revenue"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2026-04-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2026-04-30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produk Terlaris (Top Products)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/reports/top-products?limit=5&start_date=2026-04-01&end_date=2026-04-30",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"reports",
+								"top-products"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "start_date",
+									"value": "2026-04-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2026-04-30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rekap Kasir (Cashier Summary)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/reports/cashier-summary?start_date=2026-04-01&end_date=2026-04-30",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"reports",
+								"cashier-summary"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2026-04-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2026-04-30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Laporan Transaksi (CSV)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/owner/reports/export?format=csv&start_date=2026-04-01&end_date=2026-04-30",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner",
+								"reports",
+								"export"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "csv"
+								},
+								{
+									"key": "start_date",
+									"value": "2026-04-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2026-04-30"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shifts",
+			"item": [
+				{
+					"name": "Buka Shift (Open)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"opening_cash\": 15000000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/shifts/open",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"shifts",
+								"open"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tutup Shift (Close)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"closing_cash\": 125000000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/shifts/close",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"shifts",
+								"close"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shift Aktif (Saat Ini)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/shifts/current",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"shifts",
+								"current"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Buat Draft Transaksi Baru",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_name\": \"Anto\",\n  \"table_id\": \"uuid-table-1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Order / Keranjang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-order-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tambah Item ke Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"product_id\": \"uuid-prod-123\",\n  \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders/:id/items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders",
+								":id",
+								"items"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-order-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Qty Item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"quantity\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders/:id/items/:item_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders",
+								":id",
+								"items",
+								":item_id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-order-1"
+								},
+								{
+									"key": "item_id",
+									"value": "uuid-item-123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hapus Item dari Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders/:id/items/:item_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders",
+								":id",
+								"items",
+								":item_id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-order-1"
+								},
+								{
+									"key": "item_id",
+									"value": "uuid-item-123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Terapkan/Input Promo Code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"promo_id\": \"uuid-promo-xyz\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders/:id/promo",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders",
+								":id",
+								"promo"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-order-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gagal / Tarik Kembali Promo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders/:id/promo",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders",
+								":id",
+								"promo"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-order-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Riwayat Transaksi Shift Berjalan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders/history?page=1&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Checkout Order (Generate SNAP)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount_tendered\": 5000000 \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders/:id/checkout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders",
+								":id",
+								"checkout"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-order-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cek Status Pembayaran Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/cashier/orders/:id/payment-status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cashier",
+								"orders",
+								":id",
+								"payment-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uuid-order-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Midtrans Webhook (Server-to-Server)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order_id\": \"uuid-trans-123\",\n  \"transaction_status\": \"settlement\",\n  \"gross_amount\": \"42500.00\",\n  \"signature_key\": \"encoded-signature\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/webhooks/midtrans",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"webhooks",
+								"midtrans"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
